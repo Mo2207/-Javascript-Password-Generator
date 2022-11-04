@@ -33,13 +33,17 @@ function generatePassword() {
   let includeSpecialCharacters = confirm("Do you wish to include any special characters?");
   console.log(`includeSpecialCharacters is ${includeSpecialCharacters}`);
 
+  // checks to make sure at least one of the character types were chosen:
+  if (!(lowercaseCharacters && uppercaseCharacters && numberCharacters && includeSpecialCharacters)) {
+    alert("At least one character type needs to be selected (upper/lower case characters, numbers or special characters)");
+    generatePassword();
+  }
+
   // PASSWORD GENERATION:
 
   // all potential special characters:
   // ~`! @#$%^&*()_-+={[}]|\:;"'<,>.?/
   let specialCharacters = ["~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]","|",`/`,":",";",`"`,"'","<",",",">",".","?","/"];
-
-
 
 
 }
