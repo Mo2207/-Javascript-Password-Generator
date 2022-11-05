@@ -1,86 +1,84 @@
 // Assignment code here
 
-  // all potential lower-case characters:
+  // ----------All potential lower-case characters----------
   let lowercaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-  // all potential upper-case characters:
+  // ----------All potential upper-case characters----------
   let uppercaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-  // all potential number characters:
+  // ----------All potential number characters----------
   let numbers = ["1","2","3","4","5","6","7","8","9","0"];
 
-  // all potential special characters:
+  // ----------All potential special characters----------
   let specialCharacters = ["~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]","|",`/`,":",";",`"`,"'","<",",",">",".","?","/"];
 
 function generatePassword() {
 
+  // Defines empty variables everytime function is called
   let allCharacters = [];
   let newPassword = "";
 
-  // ALL PASSWORD PROMPTS:
+  // ----------ALL PASSWORD PROMPTS----------
 
-  // password length prompt:
+  // ----------Password length prompt----------
   let passwordLength = prompt("choose the length of your password:");
-  if (parseInt(passwordLength) < 8) { // checks if too short
+  if (parseInt(passwordLength) < 8) { // Checks if too short
     alert("Password length must be at least 8 characters long.");
     generatePassword();
   }
-  if (parseInt(passwordLength) > 128) { // checks if too long
+  if (parseInt(passwordLength) > 128) { // Checks if too long
     alert("Password length must be no more than 128 characters long.");
     generatePassword();
   }
 
-  // include lowercase characters prompt:
+  // ----------Include lowercase characters prompt----------
   let includeLowerCase = confirm("Do you wish to include any lower-case characters?");  
-
   if (includeLowerCase) { // checks to add characters or not
     allCharacters.push(...lowercaseLetters);
     
     console.log(`current characters to choose from are: ${allCharacters}`);
   }
 
-  // include uppercase characters prompt:
+  // ----------Include uppercase characters prompt----------
   let includeUpperCase = confirm("Do you wish to include any upper-case characters?");
-
   if (includeUpperCase) { // checks to add characters or not
     allCharacters.push(...uppercaseLetters);
 
     console.log(`current characters to choose from are: ${allCharacters}`);
   }
 
-  // include numeric characters prompt:
+  // ----------Include numeric characters prompt----------
   let includeNumberCharacters = confirm("Do you wish to include any numbers?");
-
   if (includeNumberCharacters) { // checks to add characters or not
     allCharacters.push(...numbers);
 
     console.log(`current characters to choose from are: ${allCharacters}`);
   }
 
-  // include special characters prompt:
+  // ----------Include special characters prompt----------
   let includeSpecialCharacters = confirm("Do you wish to include any special characters?");
-
   if (includeSpecialCharacters) { // checks to add characters or not
     allCharacters.push(...specialCharacters);
 
     console.log(`current characters to choose from are: ${allCharacters}`);
   }
 
-  // checks to make sure at least one of the character types were chosen:
+  // Checks to make sure at least one of the character types were chosen:
   if (!includeLowerCase && !includeUpperCase && !includeNumberCharacters && !includeSpecialCharacters) {
     alert("At least one character type needs to be selected (upper/lower case characters, numbers or special characters)");
     generatePassword();
   }
 
-  // PASSWORD GENERATION:
+  // ----------PASSWORD GENERATION----------
 
-  console.log(allCharacters);
+  console.log(`All characters to be randomly generated: ${allCharacters}`);
 
   for (let i=0; i < parseInt(passwordLength); i++) {
+    // Loops through allCharacters and chooses randomly which to add, finishes when the users password length is reached
     newPassword += allCharacters[Math.floor(Math.random() * allCharacters.length)];
-    console.log(newPassword);
   } return newPassword;
 }
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
