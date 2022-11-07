@@ -16,12 +16,17 @@ function generatePassword() {
 
   // Defines empty variables everytime function is called
   let allCharacters = [];
-  let newPassword = "";
+  console.log(`right at the start: ${allCharacters}`);
+  // let newPassword = "";
 
   // ----------ALL PASSWORD PROMPTS----------
 
   // ----------Password length prompt----------
   let passwordLength = prompt("choose the length of your password:");
+  if (isNaN(parseInt(passwordLength))) { // checks to make sure input is a number
+    alert("Please pick a number for password length.");
+    generatePassword();
+  }
   if (parseInt(passwordLength) < 8) { // Checks if too short
     alert("Password length must be at least 8 characters long.");
     generatePassword();
@@ -66,6 +71,7 @@ function generatePassword() {
   // Checks to make sure at least one of the character types were chosen:
   if (!includeLowerCase && !includeUpperCase && !includeNumberCharacters && !includeSpecialCharacters) {
     alert("At least one character type needs to be selected (upper/lower case characters, numbers or special characters)");
+
     generatePassword();
   }
 
@@ -73,10 +79,14 @@ function generatePassword() {
 
   console.log(`All characters to be randomly generated: ${allCharacters}`);
 
+  let newPassword = "";
+  console.log("right before loop")
   for (let i=0; i < parseInt(passwordLength); i++) {
     // Loops through allCharacters and chooses randomly which to add, finishes when the users password length is reached
     newPassword += allCharacters[Math.floor(Math.random() * allCharacters.length)];
-  } return newPassword;
+  } 
+  console.log("right before return")
+  return newPassword;
 }
 
 
@@ -93,4 +103,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword); // i think this is where bug is
