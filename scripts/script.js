@@ -14,10 +14,9 @@
 
 function generatePassword() {
 
-  // Defines empty variables everytime function is called
+  // Defines empty variable everytime function is called
   let allCharacters = [];
   console.log(`right at the start: ${allCharacters}`);
-  // let newPassword = "";
 
   // ----------ALL PASSWORD PROMPTS----------
 
@@ -25,15 +24,18 @@ function generatePassword() {
   let passwordLength = prompt("choose the length of your password:");
   if (isNaN(parseInt(passwordLength))) { // checks to make sure input is a number
     alert("Please pick a number for password length.");
-    generatePassword();
+    // generatePassword();
+    return;
   }
   if (parseInt(passwordLength) < 8) { // Checks if too short
     alert("Password length must be at least 8 characters long.");
-    generatePassword();
+    // generatePassword();
+    return;
   }
   if (parseInt(passwordLength) > 128) { // Checks if too long
     alert("Password length must be no more than 128 characters long.");
-    generatePassword();
+    // generatePassword();
+    return;
   }
 
   // ----------Include lowercase characters prompt----------
@@ -71,8 +73,9 @@ function generatePassword() {
   // Checks to make sure at least one of the character types were chosen:
   if (!includeLowerCase && !includeUpperCase && !includeNumberCharacters && !includeSpecialCharacters) {
     alert("At least one character type needs to be selected (upper/lower case characters, numbers or special characters)");
-
+    
     generatePassword();
+    
   }
 
   // ----------PASSWORD GENERATION----------
@@ -80,15 +83,14 @@ function generatePassword() {
   console.log(`All characters to be randomly generated: ${allCharacters}`);
 
   let newPassword = "";
-  console.log("right before loop")
+  console.log(`right before loop allCharacters is: ${allCharacters}`);
   for (let i=0; i < parseInt(passwordLength); i++) {
     // Loops through allCharacters and chooses randomly which to add, finishes when the users password length is reached
     newPassword += allCharacters[Math.floor(Math.random() * allCharacters.length)];
   } 
-  console.log("right before return")
+  console.log(`right before return newPassword is: ${newPassword}`);
   return newPassword;
 }
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -103,4 +105,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword); // i think this is where bug is
+generateBtn.addEventListener("click", writePassword);
