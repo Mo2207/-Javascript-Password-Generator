@@ -13,7 +13,7 @@ This project can be viewed using the live server or view in default browser exte
 Or it can be viewed on github pages here: https://mo2207.github.io/Javascript-Password-Generator/
 
 ## Usage:
-!["picture of password generator code"](/assets/images/PasswordGeneratorCode.png)
+!["picture of password generator code"](/assets/images/updatedCodeScreenshot.png)
 !["picture of password generator page"](/assets/images/PasswordGeneratorScreenshot.png)
 
 ## Credits:
