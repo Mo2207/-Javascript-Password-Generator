@@ -24,17 +24,17 @@ function generatePassword() {
   let passwordLength = prompt("choose the length of your password:");
   if (isNaN(parseInt(passwordLength))) { // checks to make sure input is a number
     alert("Please pick a number for password length.");
-    // generatePassword();
-    return;
+    
+    return null;
   }
   if (parseInt(passwordLength) < 8) { // Checks if too short
     alert("Password length must be at least 8 characters long.");
-    // generatePassword();
+
     return;
   }
   if (parseInt(passwordLength) > 128) { // Checks if too long
     alert("Password length must be no more than 128 characters long.");
-    // generatePassword();
+
     return;
   }
 
@@ -74,8 +74,7 @@ function generatePassword() {
   if (!includeLowerCase && !includeUpperCase && !includeNumberCharacters && !includeSpecialCharacters) {
     alert("At least one character type needs to be selected (upper/lower case characters, numbers or special characters)");
     
-    generatePassword();
-    
+    return null;
   }
 
   // ----------PASSWORD GENERATION----------
@@ -83,12 +82,12 @@ function generatePassword() {
   console.log(`All characters to be randomly generated: ${allCharacters}`);
 
   let newPassword = "";
-  console.log(`right before loop allCharacters is: ${allCharacters}`);
   for (let i=0; i < parseInt(passwordLength); i++) {
     // Loops through allCharacters and chooses randomly which to add, finishes when the users password length is reached
     newPassword += allCharacters[Math.floor(Math.random() * allCharacters.length)];
   } 
-  console.log(`right before return newPassword is: ${newPassword}`);
+  
+  // console.log(`right before return newPassword is: ${newPassword}`);
   return newPassword;
 }
 
