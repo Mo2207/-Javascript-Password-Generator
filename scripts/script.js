@@ -30,12 +30,12 @@ function generatePassword() {
   if (parseInt(passwordLength) < 8) { // Checks if too short
     alert("Password length must be at least 8 characters long.");
 
-    return;
+    return null;
   }
   if (parseInt(passwordLength) > 128) { // Checks if too long
     alert("Password length must be no more than 128 characters long.");
 
-    return;
+    return null;
   }
 
   // ----------Include lowercase characters prompt----------
